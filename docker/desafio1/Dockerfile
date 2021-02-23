@@ -12,4 +12,4 @@ WORKDIR /Projects/Go
 
 COPY --from=build /Projects/Go .
 
-ENTRYPOINT ./main
+CMD [ "./main" ]
