@@ -8,6 +8,7 @@ services:
     container_name: node_app
     volumes:
       - ./node_app:/usr/src/app
+      - /usr/src/app/node_modules
     networks:
       - appnet
     ports:
