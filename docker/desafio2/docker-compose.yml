@@ -6,6 +6,7 @@ services:
       context: node_app
     tty: true
     container_name: node_app
+    entrypoint: dockerize -wait tcp://banco:3306 -timeout 20s node index.js
     volumes:
       - ./node_app:/usr/src/app
       - /usr/src/app/node_modules
