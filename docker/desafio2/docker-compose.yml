@@ -29,7 +29,6 @@ services:
       - ./mysql:/var/lib/mysql
     command: --innodb-use-native-aio=0
     container_name: banco_dados_mysql
-    restart: always
     ports:
       - "3306:3306"
     tty: true
@@ -42,6 +41,8 @@ services:
       - appnet
     ports:
       - "8080:80"
+    depends_on:
+      - app
 
 networks:
   appnet:
