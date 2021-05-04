@@ -2,11 +2,12 @@ defmodule CatalogoVideosBackendWeb.Router do
   use CatalogoVideosBackendWeb, :router
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug(:accepts, ["json"])
   end
 
   scope "/api", CatalogoVideosBackendWeb do
-    pipe_through :api
+    pipe_through(:api)
+    resources("/categories", CategoryController, except: [:new, :edit])
   end
 
   # Enables LiveDashboard only for development
@@ -20,8 +21,8 @@ defmodule CatalogoVideosBackendWeb.Router do
     import Phoenix.LiveDashboard.Router
 
     scope "/" do
-      pipe_through [:fetch_session, :protect_from_forgery]
-      live_dashboard "/dashboard", metrics: CatalogoVideosBackendWeb.Telemetry
+      pipe_through([:fetch_session, :protect_from_forgery])
+      live_dashboard("/dashboard", metrics: CatalogoVideosBackendWeb.Telemetry)
     end
   end
 end

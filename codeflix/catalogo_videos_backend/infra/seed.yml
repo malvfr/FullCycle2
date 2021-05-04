@@ -1,0 +1,32 @@
+tables:
+  - name: CATEGORIES
+    quantity: 10
+    fields:
+      - name: ID
+        category:
+          ID:
+            type: uuid
+      - name: NAME
+        category:
+          enum:
+            values:
+              - filme
+              - serie
+      - name: DESCRIPTION
+        category:
+          random:
+            type: words
+      - name: INSERTED_AT
+        category:
+          date:
+            type: between
+            start: "1950-03-01"
+            end: "2021-05-01"
+            dateLocale: "en-gb"
+      - name: UPDATED_AT
+        category:
+          date:
+            type: between
+            start: "1950-03-01"
+            end: "2021-05-01"
+            dateLocale: "en-gb"
