@@ -18,7 +18,12 @@ defmodule CatalogoVideosBackend.Categories do
 
   """
   def list_categories do
-    Repo.all(Category)
+    query =
+      from c in Category,
+        where: c.is_active == true,
+        select: c
+
+    Repo.all(query)
   end
 
   @doc """
@@ -85,8 +90,28 @@ defmodule CatalogoVideosBackend.Categories do
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_category(%Category{} = category) do
+  def force_delete_category(%Category{} = category) do
     Repo.delete(category)
+  end
+
+  @doc """
+  Soft deletes a category.
+
+  ## Examples
+
+      iex> delete_category(category)
+      {:ok, %Category{}}
+
+      iex> delete_category(category)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_category(%Category{} = category) do
+    attrs = %{is_active: false}
+
+    category
+    |> Category.changeset(attrs)
+    |> Repo.update()
   end
 
   @doc """
