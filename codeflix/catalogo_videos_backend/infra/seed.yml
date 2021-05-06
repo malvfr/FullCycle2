@@ -6,6 +6,10 @@ tables:
         category:
           ID:
             type: uuid
+      - name: IS_ACTIVE
+        category:
+          random:
+            type: boolean
       - name: NAME
         category:
           enum:
@@ -16,6 +20,40 @@ tables:
         category:
           random:
             type: words
+      - name: INSERTED_AT
+        category:
+          date:
+            type: between
+            start: "1950-03-01"
+            end: "2021-05-01"
+            dateLocale: "en-gb"
+      - name: UPDATED_AT
+        category:
+          date:
+            type: between
+            start: "1950-03-01"
+            end: "2021-05-01"
+            dateLocale: "en-gb"
+  - name: GENRES
+    quantity: 10
+    fields:
+      - name: ID
+        category:
+          ID:
+            type: uuid
+      - name: NAME
+        category:
+          enum:
+            values:
+              - terror
+              - action
+              - marvel
+              - romance
+              - superhero
+      - name: IS_ACTIVE
+        category:
+          random:
+            type: boolean
       - name: INSERTED_AT
         category:
           date:

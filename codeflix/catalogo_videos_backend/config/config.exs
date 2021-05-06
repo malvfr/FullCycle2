@@ -10,6 +10,10 @@ use Mix.Config
 config :catalogo_videos_backend,
   ecto_repos: [CatalogoVideosBackend.Repo]
 
+config :catalogo_videos_backend, CatalogoVideosBackend.Repo,
+  migration_primary_key: [type: :binary_id],
+  migration_foreign_key: [type: :binary_id]
+
 # Configures the endpoint
 config :catalogo_videos_backend, CatalogoVideosBackendWeb.Endpoint,
   url: [host: "localhost"],
