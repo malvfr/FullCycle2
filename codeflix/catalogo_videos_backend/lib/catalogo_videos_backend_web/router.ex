@@ -7,7 +7,8 @@ defmodule CatalogoVideosBackendWeb.Router do
 
   scope "/api", CatalogoVideosBackendWeb do
     pipe_through(:api)
-    resources("/categories", CategoryController, except: [:new, :edit])
+    resources "/categories", CategoryController, except: [:new, :edit]
+    resources "/genres", GenreController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development
