@@ -1,4 +1,5 @@
 import {ApplicationConfig, CatalogoNodeBackendApplication} from './application';
+import './bootstrap';
 
 export * from './application';
 

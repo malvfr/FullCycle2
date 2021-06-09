@@ -16,26 +16,23 @@ services:
       - codeflix_rabbitmq_micro-catalog
 
   elasticsearch:
-    container_name: es-container
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.11.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+    container_name: micro-catalog-elasticsearch
     environment:
-      - xpack.security.enabled=false
-      - 'discovery.type=single-node'
-    networks:
-      - app-network
+      - discovery.type=single-node
+    volumes:
+      - ./.docker/elasticdata:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
-  kibana:
-    container_name: kb-container
-    image: docker.elastic.co/kibana/kibana:7.11.0
-    environment:
-      - ELASTICSEARCH_HOSTS=http://es-container:9200
     networks:
       - app-network
-    depends_on:
-      - elasticsearch
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.5.1
     ports:
       - 5601:5601
+    networks:
+      - app-network
 
 networks:
   app-network:
