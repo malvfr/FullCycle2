@@ -5,7 +5,7 @@ const config = {
   name: 'elasticv7',
   connector: 'esv6',
   index: 'catalogo',
-  apiVersion: '7',
+  apiVersion: 7,
   debug: true,
   defaultSize: '',
   configuration: {
